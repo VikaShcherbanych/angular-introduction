@@ -6,5 +6,36 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angular-introduction';
+  newMemberName = '';
+  members: string[] = [];
+  errorMessage = '';
+  numberOfTeams: number | '' = '';
+
+  onInput(member: string) {
+    this.newMemberName = member;
+  };
+
+  addMember () {
+    if(!this.newMemberName){
+      this.errorMessage = "Name can't be empty";
+      return;
+    }
+    this.errorMessage = '';
+    this.members.push(this.newMemberName);
+    this.newMemberName = '';
+  };
+
+  clearMembers() {
+    this.members = [];
+    this.numberOfTeams = '';
+    this.errorMessage = '';
+  };
+
+  onNumberOfTeamsInput(value: string) {
+    this.numberOfTeams = Number(value);
+  };
+
+  generateTeams() {
+
+  };
 }
